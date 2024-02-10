@@ -40,7 +40,6 @@ inventoryController.getOne = async (req, res, next) => {
         return next();
     }
     catch(err){
-        res.locals.inventoryItem = "Nothing was found"
         //custom error message to add to error object
         err.controllerMessage = "Error getting one inventory item in the controller.";
         //invoke global error handler with error object

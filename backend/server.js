@@ -9,15 +9,16 @@ app.use(express.urlencoded({ extended: true }));
 
 //routes
 const inventoryRoute =  require('./routes/inventoryRoutes');
-
-
+const addressRoute =  require('./routes/addressRoutes');
+const customerRoute = require('./routes/customerRoutes');
 
 app.get('/', (req, res) => {
     res.send('Hello World');
 });
 
 app.use('/inventory', inventoryRoute);
-
+app.use('/address', addressRoute);
+app.use('/customer', customerRoute);
 
 
 // Global error handler
