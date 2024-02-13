@@ -111,7 +111,7 @@ customerModel.deleteOne = async (id) => {
         //query ...remember .rows
 
     }catch(err){
-        err.modelMessage = "Error _ customer in the model.";
+        err.modelMessage = "Error deleting customer in the model.";
         throw err;
     }finally{
         client.release();

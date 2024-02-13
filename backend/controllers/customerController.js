@@ -6,7 +6,6 @@ const customerController = {};
 customerController.getAll = async (req, res, next) => {
 
     try{
-        console.log("hi");
         //invoke model function, assigning values to res.locals
         res.locals.data = await customerModel.getAll();
         next();
