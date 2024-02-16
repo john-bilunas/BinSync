@@ -10,6 +10,14 @@ router.get('/',addressController.getOne, (req, res) => {
         res.status(404).json({message: 'Address not found'});
     }
 });
+router.get('/:custId',addressController.getAllByCustId, (req, res) => {
+
+    if(res.locals.data){
+        res.status(200).json({data: res.locals.data});
+    }else{
+        res.status(404).json({message: 'Addresses not found'});
+    }
+});
 
 router.post('/', addressController.addOne, (req, res) => {
 
@@ -20,7 +28,7 @@ router.post('/', addressController.addOne, (req, res) => {
     }
     
 });
-router.put('/', addressController.updateOne, (req, res) => {
+router.put('/:id', addressController.updateOne, (req, res) => {
     
     if(res.locals.message){
         res.status(200).json({message: res.locals.message});
@@ -29,7 +37,7 @@ router.put('/', addressController.updateOne, (req, res) => {
     }
 });
 
-router.delete('/', addressController.deleteOne, (req, res) => {
+router.delete('/:id', addressController.deleteOne, (req, res) => {
     if(res.locals.message){
         res.status(200).json({message: res.locals.message});
     }else{

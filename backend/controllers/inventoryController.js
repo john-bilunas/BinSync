@@ -6,12 +6,6 @@ const inventoryModel = require('../models/inventoryModel');
 const inventoryController = {};
 
 
-inventoryController.verifyInput = async (req, res, next) => {
-
-
-
-}
-//////////////////////////////////////GET///////////////////////////////////////////
 
 //Get all inventory
 inventoryController.getAllInventory = async (req, res, next) => {
@@ -63,7 +57,8 @@ inventoryController.update = async (req, res, next) => {
 
     try{
         //get size and quantity from the body of request object
-        const {size, quantity} = req.body;
+        const {quantity} = req.body;
+        const {size} = req.params;
         res.locals.message = await inventoryModel.update(size, quantity);
         return next();
     }catch(err){
@@ -75,7 +70,7 @@ inventoryController.update = async (req, res, next) => {
 inventoryController.delete = async (req, res, next) => {
 
     try{
-        const {size} = req.body;
+        const {size} = req.params;
         res.locals.message = await inventoryModel.delete(size);
         return next();
     }catch(err){
