@@ -21,7 +21,26 @@ addressModel.getOne = async (id) => {
     }
 }
 
-addressModel.addOne = async (street, city, state, zip, customerId, notes) => {
+addressModel.getAllByCustId = async (custId) => {
+    //input: id
+    //outoput: address object
+
+    let client;
+    try{
+        client = await pool.connect();
+        const queryText = "SELECT * FROM Address WHERE customerId = $1";
+        const queryParams = [custId];
+        const result = await client.query(queryText, queryParams);
+        return result.rows;
+    }catch(err){
+        err.modelMessage = "Error getting addresses in the model.";
+        throw err;
+    }finally{
+        client.release();
+    }
+}
+
+addressModel.addOne = async (street, city, state, zip, customerId) => {
     //input: street, city, state, zip, customerId, notes
     //output: 
         //success: return success message
@@ -30,8 +49,8 @@ addressModel.addOne = async (street, city, state, zip, customerId, notes) => {
         let client;
         try{
             client  = await pool.connect();
-            const queryText = "INSERT INTO Address (street, city, state, zip, customerId, notes) VALUES ($1,$2,$3,$4,$5,$6)";
-            const queryParams = [street, city, state, zip, customerId, notes];
+            const queryText = "INSERT INTO Address (street, city, state, zip, customerId) VALUES ($1,$2,$3,$4,$5)";
+            const queryParams = [street, city, state, zip, customerId];
             await client.query(queryText, queryParams);
             return "Address has been successfully added.";
         }catch(err){
@@ -57,9 +76,9 @@ addressModel.updateOne = async (updatedInfo) => {
         const currentData = currentAddress.rows[0];
         const newData = Object.assign(currentData,updatedInfo);
         //make an update to the db for this particular address
-        const {street, city, state, zip, customerid, notes} = newData;
-        const queryText = "UPDATE Address SET street = $1, city = $2, state = $3, zip = $4, customerId = $5, notes = $6 WHERE id = $7";
-        const queryParams = [street, city, state, zip, customerid, notes, id];
+        const {street, city, state, zip, customerid} = newData;
+        const queryText = "UPDATE Address SET street = $1, city = $2, state = $3, zip = $4, customerId = $5 WHERE id = $6";
+        const queryParams = [street, city, state, zip, customerid, id];
         await client.query(queryText,queryParams);
         return "Address has been successfully updated.";
     }catch(err){

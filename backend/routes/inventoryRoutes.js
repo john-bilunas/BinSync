@@ -3,7 +3,8 @@ const router = express.Router(); // router object
 const inventoryController = require('../controllers/inventoryController');
 
 /*
-Inventory API Documentation
+
+******************Inventory API Documentation******************
 
 --GET ALL Inventory items
     Route: http://localhost:3001/inventory
@@ -45,12 +46,6 @@ Inventory API Documentation
         Route: http://localhost:3001/inventory/size
         Input: Just size in params.
         Output: MESSAGE -> "Inventory item has been succesfully deleted."
-
-
-
-
-
-
 */
 
 //Get request for a single inventory item

@@ -43,7 +43,7 @@ bookingController.addOne = async (req, res, next) => {
     try{
         //required properties
         const requiredProps = ["customerId", "addressId", "inventoryId", "dropoff", "pickup", "bookingStatus"];
-        
+        const notes = req.body.notes ? req.body.notes : null;
         requiredProps.forEach( (el) => {
             if(!req.body.hasOwnProperty(el)){
                 throw new Error("Missing a required property to create a new booking.");
@@ -52,7 +52,7 @@ bookingController.addOne = async (req, res, next) => {
         
         const {customerId, addressId, inventoryId, dropoff, pickup, bookingStatus} = req.body;
         
-        res.locals.message = await bookingModel.addOne(customerId, addressId, inventoryId, dropoff, pickup, bookingStatus);
+        res.locals.message = await bookingModel.addOne(customerId, addressId, inventoryId, dropoff, pickup, bookingStatus, notes);
         return next();
     }catch(err){
         err.controllerMessage = "Error creating a booking in the controller.";

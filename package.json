@@ -1,6 +1,7 @@
 {
   "name": "ideal-inventory",
   "version": "0.1.0",
+  "proxy": "http://localhost:3001",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
@@ -18,9 +19,10 @@
   },
   "scripts": {
     "start": "concurrently \"npm run server\" \"npm run client\"",
+    "dev": "concurrently \"npm run devStart\" \"npm run client\"",
     "devStart": "nodemon backend/server.js",
-    "server": "node backend/server.js",
     "client": "react-scripts start",
+    "server": "node backend/server.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

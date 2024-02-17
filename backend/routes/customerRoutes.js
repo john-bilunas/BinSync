@@ -3,6 +3,76 @@ const router = express.Router();
 const customerController = require('../controllers/customerController')
 
 
+/*
+
+******************Address API Documentation******************
+
+
+GET One by id
+    Route: http://localhost:3001/customer/id
+    Input: Paramertized route, use customer id
+
+    Output: Single customer object
+        {
+        "id": 2,
+        "firstname": "Jane",
+        "lastname": "Smith",
+        "phone": "987-654-3210",
+        "email": "jane.smith@example.com",
+        "notes": "Dummy note for Jane"
+        }
+
+
+GET All
+    Route: http://localhost:3001/customer
+    Input: Nothing
+
+    Output: Array of customer objects
+    [
+        {
+            "id": 2,
+            "firstname": "Jane",
+            "lastname": "Smith",
+            "phone": "987-654-3210",
+            "email": "jane.smith@example.com",
+            "notes": "Dummy note for Jane"
+        },
+        .....
+    ]
+    
+
+POST Add one
+    Route:http://localhost:3001/customer
+    Input: Object with the following properties
+        {
+        "firstName": "Tim",
+        "lastName": "P",
+        "phone": "123-654-3210",
+        "email": "Timmy@example.com",
+        "notes": "Dummy note for Timothy"
+        }
+    Output: MESSAGE "Customer has successfully been created."
+    
+
+UPDATE By id -- no camel case for input
+    Route:http://localhost:3001/customer/id
+    Input:
+        -Paramertized route, use customer id
+        -Object with the properties you would like to update
+        -If property is two words, do not use camel case, use all lowercase. Postgres returns queries in all lowercase, so this is needed for proper comparison. 
+
+    Output:
+    
+
+DELETE By id - ensure that input is camelCase
+    Route: http://localhost:3001/customer/id
+    Input: Paramertized route, use customer id
+
+    Output: MESSAGE "Customer has been successfully deleted."
+    
+
+*/
+
 router.get('/',customerController.getAll, (req, res) => {
 
     if(res.locals.data){

@@ -1,7 +1,120 @@
 const express = require('express');
 const router = express.Router();
 const bookingController = require('../controllers/bookingController');
-//GET All
+
+
+/*
+
+******************Address API Documentation******************
+
+GET All
+
+    Route: http://localhost:3001/booking
+    Input: Nothing
+
+
+    Output: Array of all booking objects
+    [
+        {
+            "id": 4,
+            "customerid": 2,
+            "addressid": 2,
+            "dropoff": "2024-03-05T05:00:00.000Z",
+            "pickup": "2024-03-10T05:00:00.000Z",
+            "bookingstatus": "inprocess",
+            "inventoryid": 15,
+            "notes": "notes"
+        },
+        ......
+    ]
+
+
+GET One by id
+
+    Route: http://localhost:3001/booking/id
+    Input: Parameterized route with booking id
+
+
+    Output: Single booking object
+        {
+            "id": 4,
+            "customerid": 2,
+            "addressid": 2,
+            "dropoff": "2024-03-05T05:00:00.000Z",
+            "pickup": "2024-03-10T05:00:00.000Z",
+            "bookingstatus": "inprocess",
+            "inventoryid": 15,
+            "notes": "notes"
+        }
+    
+
+POST Add One
+
+    Route: http://localhost:3001/booking
+    Input: Object with the following properties: 
+        {
+            "customerId": 2,
+            "addressId": 8,
+            "dropoff": "2024-02-05T05:00:00.000Z",
+            "pickup": "2024-02-10T05:00:00.000Z",
+            "bookingStatus": "completed",
+            "inventoryId": 325,
+            "notes": "notes have been updated."
+        }
+        ....Please make sure to make properties camel case when necessary to ensure that they will be added to the database.
+
+
+    Output: MESSAGE "A booking has successfully been created."
+
+    
+
+PUT Update one by id
+
+    Route: http://localhost:3001/booking/id
+    Input: 
+        -Parameterized route with id 
+        -Object of updated properties
+        {
+            "customerid": 7,
+            "addressid": 8,
+            "dropoff": "2024-02-05",
+            "pickup": "2024-02-10",
+            "bookingstatus": "complete",
+            "inventoryid": 325,
+            "notes": "notes have been updated."
+        }
+
+    Output: MESSAGE "Success"
+
+    
+
+DELETE One by id
+
+    Route: http://localhost:3001/booking/id
+    Input: Parameterized route with booking id
+
+
+    Output: "Successfully deleted booking."
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*/
+
 router.get('/' ,bookingController.getAll, async (req, res) => {
 
     if(res.locals.data){
