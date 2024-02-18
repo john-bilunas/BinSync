@@ -12,7 +12,12 @@ body{
   min-height: 100vh;
   border: solid 1px black;
 }
-
+h1,h2,h3,h4,h5{
+  text-align: center;
+}
+h1{
+  margin: 30px;
+}
 /* Header */
 nav{
 
@@ -22,10 +27,31 @@ nav ul{
   list-style-type: none;
   display: flex;
   justify-content: center;
-  padding: 20px 0px;
+  padding: 10px 0px;
 }
 nav ul li{
 
   padding: 0px 20px;
 }
 /* Inventory */
+
+#add-inventory-form{
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  border: solid 1px red;
+  align-items: center;
+  height: 35px;
+  position: relative;
+
+}
+
+#add-inventory-form button{
+
+}
+.inv-input-group{
+  height: 100%;
+}
+.inv-input-group input{
+  height: 70%;
+}
