@@ -27,17 +27,28 @@ function Inventory() {
         <h1>Inventory</h1>
         <form id= "add-inventory-form">
           <div className='inv-input-group'>
-              <label htmlFor=""></label>
-              <input type="text" />
+              <label htmlFor="add-inv-size">Dumpster Size</label>
+              <input id= "add-inv-size" type="text" />
             </div>
             <div className='inv-input-group'>
-              <label htmlFor=""></label>
-              <input type="text" />
+              <label htmlFor="add-inv-qty">Quantity</label>
+              <input id= "add-inv-qty" type="text" />
             </div>
             <div className='inv-input-group'>
               <button>Add to Inventory</button>
             </div>
         </form>
+
+        <table>
+          <thead>
+            <tr>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+        </table>
     </main>
   )
 }
