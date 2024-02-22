@@ -10,7 +10,7 @@ inventoryModel.getInventory = async () => {
         //connect to the pool
         client = await pool.connect();
         //query for all inventory items
-        const result = await client.query('SELECT * FROM Inventory;');
+        const result = await client.query('SELECT * FROM Inventory ORDER BY size;');
         console.log("rows",result.rows);
         return result.rows;
     }catch(err){
@@ -90,7 +90,7 @@ inventoryModel.delete = async (size) => {
         client = await pool.connect();
         const queryText = "DELETE FROM Inventory WHERE size = $1";
         const queryParams = [size];
-        client.query(queryText, queryParams)
+        await client.query(queryText, queryParams)
         return "Inventory item has been succesfully deleted."
     }catch(err){
         err.modelMessage = "Error deleting inventory in model.";
