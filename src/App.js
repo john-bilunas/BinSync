@@ -4,7 +4,7 @@ import Home from './components/Home'
 import Header from './components/Header';
 import Inventory from './components/Inventory/Inventory';
 import Customers from './components/Customers/Customers'; 
-import Bookings from './components/Bookings';
+import Bookings from './components/Booking/Bookings';
 function App() {
   return (
     <BrowserRouter>

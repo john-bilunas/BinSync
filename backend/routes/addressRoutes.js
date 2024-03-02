@@ -6,23 +6,24 @@ const addressController = require('../controllers/addressController');
 
 ******************Address API Documentation******************
 
-GET One by address id
+GET all addresses
 
 
     Route: http://localhost:3001/address
     Input:
         {
-            "id" : 10
+            
         }
     Output:
-    {
+
+    [{
         "id": 6,
         "street": "123 Fake Street",
         "city": "Whitman",
         "state": "MA",
         "zip": "02382",
         "customerid": 4
-    }
+    },...]
 
 GET All by customer id
 
@@ -84,7 +85,7 @@ DELETE One
 
 */
 
-router.get('/',addressController.getOne, (req, res) => {
+router.get('/',addressController.getAll, (req, res) => {
 
     if(res.locals.data){
         res.status(200).json({data: res.locals.data});

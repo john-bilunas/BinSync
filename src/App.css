@@ -108,9 +108,24 @@ input {
 }
 #add-address-form *{
   margin: 3px 0px;
+
+}
+#add-address-form-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
 }
 #add-address-form label{
   padding-right: 10px;
+}
+.split-form{
+  width: 50%;
+}
+#address-list{
+  list-style-type: none;
+  width: 100%;
+  text-align: center;
 }
 /*********************** Modal ****************************/
 
@@ -134,10 +149,7 @@ input {
   flex-direction: column;
   align-items: center;
 }
-#modal-content :first-child{
-  /* font-weight: bold; */
-  font-size: 24px;
-}
+
 .customer-section{
   text-align: left;
   width: 90%;
@@ -159,8 +171,35 @@ input {
 .hide-modal{
   display: none;
 }
+/*********************** Booking ****************************/
+#booking-form-container{
+  display: flex;
+  justify-content: center;
+}
+
+#booking-form{
+  width: 25%;
+  
+}
+#booking-form select{
+  width: 100%;
+  font-size: 18px;
+}
+#booking-form *{
+  margin: 3px 0px;
+}
+.block label{
+  padding-right: 5px;
+}
+#booking-table{
+  width: 90%;
+  text-align: center;
+}
 /*********************** GLOBAL ****************************/
 
+main{
+
+}
 .table-container{
   width: 100%;
   display: flex;
@@ -181,9 +220,22 @@ input:focus{
 .red-background{
   background-color: rgb(245, 203, 203);
 }
+.vertical-center{
 
+}
+.title-pic{
+  display: block;
+  float: center;
+  height: 35px;
+}
 .table-picture{
   height:20px;
+}
+.large-table-picture{
+  height:30px;
+}
+.large-table-picture:hover{
+  cursor: pointer;
 }
 .table-picture:hover{
   cursor: pointer;
@@ -218,11 +270,19 @@ tr:nth-child(even){
 textarea{
   padding: 5px 5px;
 }
-.two-buttons{
+.side-by-side{
   display: flex;
   justify-content: space-around;
   width: 100%;
 }
-.two-buttons button{
+.side-by-side button{
   width: 100px;
+}
+.column{
+  display: flex;
+  flex-direction: column;
+}
+.block{
+  display: block;
+  width: 100%;
 }

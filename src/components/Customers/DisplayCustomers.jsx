@@ -1,13 +1,13 @@
 import React from 'react'
 import CustomerRow from './CustomerRow';
 function DisplayCustomers(props) {
-    const {customers, setModalCustomer, setShowModal} = props;
+    const {customers, setModalCustomer, setShowModal } = props;
 
 
 
     //iterate through customers and create the new row with it
     const customerData = customers.map( (el) => {
-        return <CustomerRow key= {`customer-${el.id}`} id= {el.id} name= {`${el.firstname} ${el.lastname}`} phone= {el.phone} email= {el.email} notes= {el.notes} setModalCustomer= {setModalCustomer} setShowModal= {setShowModal}/>
+        return <CustomerRow key= {`customer-${el.id}`} id= {el.id} firstname= {el.firstname} lastname= {el.lastname} phone= {el.phone} email= {el.email} notes= {el.notes} setModalCustomer= {setModalCustomer} setShowModal= {setShowModal}/>
 
     })
 

@@ -31,7 +31,7 @@ function Inventory() {
 
     // console.log( typeof inventory)
     return (
-    <main className = "">
+    <main >
         <h1>Inventory</h1>
       <AddInventoryForm inventory= {inventory} fetchInventory= {fetchInventory}/>
       <DisplayInventory inventory={inventory} fetchInventory= {fetchInventory}/>

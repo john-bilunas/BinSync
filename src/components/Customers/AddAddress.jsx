@@ -45,11 +45,11 @@ function AddAddress(props) {
 
     console.log("Add Address", addAddress)
     return (
-    <>
+        <div className='split-form'>
     <h2>Add an Address</h2>
         <div className="center-container">
             <form id= 'add-address-form'>
-                <div className="center-container">
+                <div className="start-container">
                    {/* <label htmlFor="choose-customer">Select a Customer</label> */}
                    <select  id="choose-customer" value= {addAddress.customerId} required
                    onChange= { (e) => {
@@ -60,7 +60,7 @@ function AddAddress(props) {
                    </select>
                 </div>
                 {/* street */}
-                <div className="center-container">
+                <div className="start-container">
                     <label htmlFor="street">Street</label>
                     <input type="text" id= "street" autoComplete='off' value= {addAddress.street} required
                     onChange= { (e) => {
@@ -68,7 +68,7 @@ function AddAddress(props) {
                    }}/>
                 </div>
                 {/*  city */}
-                <div className="center-container">
+                <div className="start-container">
                     <label htmlFor="city">City</label>
                     <input type="text" id= "city" autoComplete='off' value= {addAddress.city} required
                     onChange= { (e) => {
@@ -76,7 +76,7 @@ function AddAddress(props) {
                    }}/>
                 </div>
                 {/*  state */}
-                <div className="center-container">
+                <div className="start-container">
                     <label htmlFor="states">State</label>
                     <select id="states" value= {addAddress.state} required
                     onChange= { (e) => {
@@ -148,7 +148,7 @@ function AddAddress(props) {
                 </div>
             </form>
         </div>
-    </>
+    </div>
   )
 }
 

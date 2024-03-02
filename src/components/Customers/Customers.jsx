@@ -27,23 +27,27 @@ function Customers() {
 
 
   //state to update the customer's id for the modal
-  const [modalCustomer, setModalCustomer] = useState(null);
+  const [modalCustomer, setModalCustomer] = useState({});
   const [showModal, setShowModal] = useState(false);//change to false for default
+  const [modalEdit, setModalEdit] = useState(false);
 
+  //functionality to close the modal
   const closeModal = () => {
-
-    //change state to hide the
     setShowModal(false);
+    setModalEdit(false);
 }
   console.log('Modal customer: ', modalCustomer)
   return (
-    <>
+    <main>
       <h1>Customers</h1>
-      <AddCustomer/>
+      <div className='side-by-side'>
+        <AddCustomer/>
       <AddAddress customers={customers}/>
-      <DisplayCustomers customers={customers} setModalCustomer= {setModalCustomer} setShowModal= {setShowModal}/>
-      <Modal custId= {modalCustomer} showModal= {showModal} closeModal= {closeModal}/>
-    </>
+      </div>
+      
+      <DisplayCustomers customers={customers} setModalCustomer= {setModalCustomer} setShowModal= {setShowModal} />
+      <Modal modalCustomer= {modalCustomer} showModal= {showModal} closeModal= {closeModal} fetchCustomers= {fetchCustomers} modalEdit= {modalEdit} setModalEdit= {setModalEdit} />
+    </main>
    
   )
 }

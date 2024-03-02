@@ -38,11 +38,11 @@ function AddCustomer() {
 
   return (
     
-    <>
+    <div className='split-form'>
         <h2>Add Customer</h2>
-        <div className= "center-container">
+        <div className= "center-container " >
                 <form id= 'add-customer-form'>
-                    <div className="center-container">
+                    <div className="start-container">
                         {/* first name */}
                         <label htmlFor="customer-first-name">First Name</label>
                         <input type="text" id= 'customer-first-name' autoComplete= 'off' value= {addCustomer.firstName} required
@@ -50,6 +50,8 @@ function AddCustomer() {
                                 updateAddCustomer('firstName', e.target.value);
                             }}
                         />
+                        </div>
+                        <div className="start-container">
                         {/* last name */}
                         <label htmlFor="customer-first-name">Last Name</label>
                         <input type="text" id= 'customer-first-name' autoComplete= 'off' value= {addCustomer.lastName} required 
@@ -57,7 +59,7 @@ function AddCustomer() {
                             updateAddCustomer('lastName', e.target.value);
                         }}/>
                     </div>
-                    <div className="center-container">
+                    <div className="start-container">
                         {/* phone number */}
                         <label htmlFor="customer-phone">Phone Number</label>
                         <input type="text"  id="customer-phone" autoComplete= 'off' value= {addCustomer.phone} required 
@@ -66,7 +68,7 @@ function AddCustomer() {
                         }}
                         />
                     </div>
-                    <div className="center-container">
+                    <div className="start-container">
                         {/* email */}
                         <label htmlFor="customer-email">Email</label>
                         <input type="email" name="" id="customer-email" autoComplete= 'off' value= {addCustomer.email}  required 
@@ -75,10 +77,10 @@ function AddCustomer() {
                         }}
                         />
                     </div>
-                    <div className="center-container" style= { {"flexDirection": "column"}} >
+                    <div className="start-container" style= { {"flexDirection": "column"}} >
                         {/* notes */}
                         <label htmlFor="customer-notes">Notes</label>
-                        <textarea type="text-area" id="customer-notes" rows= "10" cols= "60" placeholder= "Enter any notes for this customer here:" value= {addCustomer.notes}
+                        <textarea type="text-area" id="customer-notes" rows= "5" cols= "50" placeholder= "Enter any notes for this customer here:" value= {addCustomer.notes}
                         onChange= { (e) => {                               
                             updateAddCustomer('notes', e.target.value);
                         }}
@@ -90,8 +92,8 @@ function AddCustomer() {
                     
                     
                 </form>
+            </div>
         </div>
-        </>
   )
 }
 
