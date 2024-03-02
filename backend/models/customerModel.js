@@ -9,7 +9,7 @@ customerModel.getAll = async () => {
     try{
         
         client = await pool.connect();
-        const queryText = "SELECT * FROM Customers";
+        const queryText = "SELECT * FROM Customers ORDER BY lastName ASC";
         //query ...remember .rows
         console.log("hello")
         const result = await client.query(queryText);

@@ -12,12 +12,7 @@ body{
   min-height: 100vh;
   border: solid 1px black;
 }
-h1,h2,h3,h4,h5{
-  text-align: center;
-}
-h1{
-  margin: 30px;
-}
+
 /* Header */
 nav{
 
@@ -33,13 +28,12 @@ nav ul li{
 
   padding: 0px 20px;
 }
-/* Inventory */
+/******************* Inventory *******************/
 
 #add-inventory-form{
   width: 100%;
   display: flex;
-  justify-content: space-around;
-  border: solid 1px red;
+  justify-content: center;
   align-items: center;
   height: 35px;
   position: relative;
@@ -47,11 +41,248 @@ nav ul li{
 }
 
 #add-inventory-form button{
+height: 100%;
+padding: 0px 10px;
 
 }
 .inv-input-group{
   height: 100%;
+  display: flex;
+  align-items: center;
+ margin: 0px 20px;
 }
 .inv-input-group input{
   height: 70%;
+  padding: 0px 5px;
+}
+.inv-input-group label{
+  padding-right: 10px;
+}
+#add-inv-size{
+
+}
+input {
+  /* outline: none; */
+  /* border: solid 1px black; */
+  border-radius: 3px;;
+
+}
+
+#inventory-table{
+  width: 70%;
+  text-align: center;
+}
+
+/* All colums 25% */
+#inventory-table th{
+  width: 25%;
+}
+#add-inventory-message{
+  text-align: center;
+}
+/*********************** Customers ************************/
+
+#customer-table{
+  width: 90%;
+  text-align: center;
+}
+#add-customer-form{
+  width: 70%;
+  /* border: solid 1px lightblue; */
+}
+#add-customer-form input{
+  height: 25px;
+  margin-right: 20px;
+}
+#add-customer-form *{
+  margin: 3px 0px;
+}
+#add-customer-form label{
+  padding-right: 10px;
+}
+/*********************** Addresses ************************/
+
+#add-address-form input{
+  height: 25px;
+  margin-right: 20px;
+}
+#add-address-form *{
+  margin: 3px 0px;
+
+}
+#add-address-form-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+#add-address-form label{
+  padding-right: 10px;
+}
+.split-form{
+  width: 50%;
+}
+#address-list{
+  list-style-type: none;
+  width: 100%;
+  text-align: center;
+}
+/*********************** Modal ****************************/
+
+#modal-container{
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  background-color: rgba(0,0,0,0.4);
+}
+#modal{
+  height: 800px;
+  width: 500px;
+  background-color: white;
+  opacity: 1;
+  z-index: 2;
+}
+#modal-content{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.customer-section{
+  text-align: left;
+  width: 90%;
+  padding: 5px;
+}
+#close-modal{
+  width: 20px;
+  position: relative;
+  left: 475px;
+  top: 5px;
+}
+#close-modal:hover{
+  cursor: pointer;
+}
+
+.show-modal{
+  display: flex;
+}
+.hide-modal{
+  display: none;
+}
+/*********************** Booking ****************************/
+#booking-form-container{
+  display: flex;
+  justify-content: center;
+}
+
+#booking-form{
+  width: 25%;
+  
+}
+#booking-form select{
+  width: 100%;
+  font-size: 18px;
+}
+#booking-form *{
+  margin: 3px 0px;
+}
+.block label{
+  padding-right: 5px;
+}
+#booking-table{
+  width: 90%;
+  text-align: center;
+}
+/*********************** GLOBAL ****************************/
+
+main{
+
+}
+.table-container{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.t{
+  height: 35px;
+}
+h1,h2,h3,h4,h5{
+  text-align: center;
+}
+h1{
+  margin: 30px;
+}
+input:focus{
+  border-width: 2px;;
+}
+.red-background{
+  background-color: rgb(245, 203, 203);
+}
+.vertical-center{
+
+}
+.title-pic{
+  display: block;
+  float: center;
+  height: 35px;
+}
+.table-picture{
+  height:20px;
+}
+.large-table-picture{
+  height:30px;
+}
+.large-table-picture:hover{
+  cursor: pointer;
+}
+.table-picture:hover{
+  cursor: pointer;
+}
+tr:nth-child(even){
+  background-color: rgb(195, 182, 206);
+}
+.table-input{
+  width: 100%;
+  height: 100%;
+  font-size: 16px;
+  padding: 0px 10px;
+  /* width: 150px; */
+}
+.hidden{
+  display: none;
+}
+.visible{
+  display: block;
+}
+.success{
+  color: green;
+}
+.failure{
+  color: red;
+}
+.center-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+textarea{
+  padding: 5px 5px;
+}
+.side-by-side{
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+.side-by-side button{
+  width: 100px;
+}
+.column{
+  display: flex;
+  flex-direction: column;
+}
+.block{
+  display: block;
+  width: 100%;
 }

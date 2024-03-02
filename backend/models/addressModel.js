@@ -2,19 +2,18 @@ const pool = require('./db');
 
 const addressModel = {};
 
-addressModel.getOne = async (id) => {
+addressModel.getAll = async () => {
     //input: id
     //outoput: address object
 
     let client;
     try{
         client = await pool.connect();
-        const queryText = "SELECT * FROM Address WHERE id = $1";
-        const queryParams = [id];
-        const result = await client.query(queryText, queryParams);
-        return result.rows[0];
+        const queryText = "SELECT * FROM Address";
+        const result = await client.query(queryText);
+        return result.rows;
     }catch(err){
-        err.modelMessage = "Error getting address in the model.";
+        err.modelMessage = "Error getting addresses in the model.";
         throw err;
     }finally{
         client.release();

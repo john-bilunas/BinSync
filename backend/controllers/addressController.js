@@ -2,12 +2,12 @@ const addressModel = require('../models/addressModel');
 
 const addressController = {};
 
-addressController.getOne = async (req, res, next) => {
+addressController.getAll = async (req, res, next) => {
     
     try{
 
-        const {id} = req.body;
-        res.locals.data = await addressModel.getOne(id);// returns data for that address
+        // const {id} = req.body;
+        res.locals.data = await addressModel.getAll();// returns data for that address
         next();
     }catch(err){
         err.controllerMessage = "Error getting address from the controller.";
