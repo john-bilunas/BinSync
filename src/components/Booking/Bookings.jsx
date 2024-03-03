@@ -14,31 +14,34 @@ function Bookings() {
     setNewBooking( (prev) => {
       return {...prev, [key]: value}
     });
-  }
+  };
 
-  //create state for all customers and inventory
+  //create state for...
+  //all customers
   const [customers, setCustomers] = useState([]);
+  //all inventory
   const [inventory, setInventory] = useState([]);
+  //customer address (for single selected customer)
   const [addresses,SetAddresses] = useState([])
+  //all addresses
   const [allAddresses,SetAllAddresses] = useState([])
+  //all bookings
   const [bookings, setBookings] = useState([]);
   
-  //fetch customers
+  //fetch ALL customers and set the customers state
   const fetchCustomers = async () => {
-
     try{
       let response = await fetch('/customer', {
       method: 'GET'
     });
     response = await response.json();
-    // console.log(response)
     setCustomers(response.data);
     }catch(err){
       console.log(err)
     }
-    
   }
-  //fetch inventory
+
+  //fetch ALL invetory and set the inventory state
   const fetchInventory = async () => {
     try{
       let response = await fetch('/inventory');
@@ -49,6 +52,7 @@ function Bookings() {
       console.log(err)
     }
   }
+  //fetch ALL bookings and set the booking state
   const fetchBookings = async() => {
     try{
       let response = await fetch('/booking');
@@ -59,6 +63,7 @@ function Bookings() {
       console.log(err)
     }
   }
+  //fetch ALL addresses and set the address state
   const fetchAllAddresses = async() => {
     try{
       let response = await fetch('/address');
@@ -70,6 +75,7 @@ function Bookings() {
     }
   }
 
+  // fetchData invokes functions to fetch and update sll major states (customers, inventory, addresses, bookings)
   const fetchData = () => {
       fetchBookings();
       fetchCustomers();
@@ -77,28 +83,24 @@ function Bookings() {
       fetchAllAddresses();
     }
 
-  //invoke fetching on render
+  //Fetch all necessary data on the first render of the component
   useEffect( () => {
-
-    
     fetchData();
-    
-
   }, []);
-  //create state for the selected customer
-  //build out options for customers to populate drop down
 
+  //create all of the options for the select element to choose a customer (for adding a booking)
   const customerOptions = customers.map( (el) => {
 
     return ( <option value= {el.id}>{`${el.firstname} ${el.lastname}`}</option>)
   });
+    //create all of the options for the select element to choose a dumpster size (for adding a booking)
   const inventoryOptions = inventory.map( (el) => {
 
     return ( <option value= {el.size}>{`${el.size} yards`}</option>)
   });
 
 
-  //Addresses
+  // fetchAddresses fetches all of the addresses for the selected customer (in AddBooking component)
   const fetchAddresses = async () => {
     if(newBooking.customerId){
       try{
@@ -112,16 +114,14 @@ function Bookings() {
     }
     
   }
-  //fetch new addresses any time that the selected customer changes
+  // Any time that the customer is changed in the form to add a booking, the address list will be updated
   useEffect( () => {
-  
-      //fetch the addresses of the customerId
       fetchAddresses();
+  }, [newBooking.customerId]);
 
-  }, [newBooking.customerId ]);
-
-  //populate address options when new addresses are fetched
+  // address options are the elements that are rendered in the select tag (in AddBooking)
   const [addressOptions, setAddressOptions] = useState([]);
+  //Any time that the list of customer addresses change, the option elements will be updated for the select tag
   useEffect( () => {
 
     if(addresses){
@@ -131,10 +131,9 @@ function Bookings() {
     });
   setAddressOptions(customerAddresses) 
     }
-    
   }, [addresses]);
 
-
+  //Post request is sent to the API to add a booking the DB
   const postBooking= async (e) => {
     e.preventDefault();
     try{
@@ -147,16 +146,11 @@ function Bookings() {
       });
       response = await response.json();
       console.log(response)
+      fetchData();
     }catch(err){
       console.log(err)
     }
   }
-
-
-  // console.log("inv",inventory)
-  // console.log("cust",customers)
-  // console.log("add", allAddresses)
-  // console.log('book' , bookings)
   return (
     <main>
       <h1>Bookings</h1>
